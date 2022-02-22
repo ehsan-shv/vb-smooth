@@ -1,88 +1,46 @@
+<template>
+  <div id="smooth-layer">
+    <slot />
+  </div>
+</template>
+
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, onMounted, nextTick } from 'vue';
+import Scrollbar from 'smooth-scrollbar';
 
-interface SampleData {
-  counter: number;
-  initCounter: number;
-  message: {
-    action: string | null;
-    amount: number | null;
-  };
-}
+export default defineComponent({
+  name: 'SmoothScroll',
+  props: {
+    options: {
+      type: Object,
+    },
+  },
 
-export default /*#__PURE__*/defineComponent({
-  name: 'VbSmooth', // vue component name
-  data(): SampleData {
-    return {
-      counter: 5,
-      initCounter: 5,
-      message: {
-        action: null,
-        amount: null,
-      },
+  setup(props) {
+    const setSmoothScroll = (container: HTMLElement | null) => {
+      if (container) Scrollbar.init(container, props.options);
     };
-  },
-  computed: {
-    changedBy() {
-      const { message } = this as SampleData;
-      if (!message.action) return 'initialized';
-      return `${message.action} ${message.amount || ''}`.trim();
-    },
-  },
-  methods: {
-    increment(arg: Event | number): void {
-      const amount = (typeof arg !== 'number') ? 1 : arg;
-      this.counter += amount;
-      this.message.action = 'incremented by';
-      this.message.amount = amount;
-    },
-    decrement(arg: Event | number): void {
-      const amount = (typeof arg !== 'number') ? 1 : arg;
-      this.counter -= amount;
-      this.message.action = 'decremented by';
-      this.message.amount = amount;
-    },
-    reset(): void {
-      this.counter = this.initCounter;
-      this.message.action = 'reset';
-      this.message.amount = null;
-    },
+
+    onMounted(() => {
+      nextTick(() => {
+        const container = document.getElementById('smooth-layer');
+        setSmoothScroll(container);
+      });
+    });
   },
 });
 </script>
 
-<template>
-  <div class="vb-smooth">
-    <p>The counter was {{ changedBy }} to <b>{{ counter }}</b>.</p>
-    <button @click="increment">
-      Click +1
-    </button>
-    <button @click="decrement">
-      Click -1
-    </button>
-    <button @click="increment(5)">
-      Click +5
-    </button>
-    <button @click="decrement(5)">
-      Click -5
-    </button>
-    <button @click="reset">
-      Reset
-    </button>
-  </div>
-</template>
+<style>
+html {
+  overflow: hidden !important;
+}
 
-<style scoped>
-  .vb-smooth {
-    display: block;
-    width: 400px;
-    margin: 25px auto;
-    border: 1px solid #ccc;
-    background: #eaeaea;
-    text-align: center;
-    padding: 25px;
-  }
-  .vb-smooth p {
-    margin: 0 0 1em;
-  }
+#smooth-layer {
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
 </style>
