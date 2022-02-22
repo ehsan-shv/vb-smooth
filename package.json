@@ -1,7 +1,20 @@
 {
   "name": "vb-smooth",
-  "version": "0.0.1",
-  "description": "Vue3 smooth scroll component",
+  "version": "1.0.0",
+  "description": "Vue3 and Nuxt3 smooth scroll component.",
+  "author": "Ehsan",
+  "keywords": [
+    "vue",
+    "nuxt",
+    "vue3",
+    "smooth-scroll",
+    "custom-scrollbar",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ehsan-shv/vb-smooth.git"
+  },
   "main": "dist/vb-smooth.ssr.js",
   "browser": "dist/vb-smooth.esm.js",
   "module": "dist/vb-smooth.esm.js",
@@ -9,7 +22,8 @@
   "types": "dist/types/src/entry.esm.d.ts",
   "files": [
     "dist/*",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "README.md"
   ],
   "sideEffects": false,
   "scripts": {
