@@ -1,7 +1,7 @@
 {
   "name": "vb-smooth",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Vue3 smooth scroll component",
   "main": "dist/vb-smooth.ssr.js",
   "browser": "dist/vb-smooth.esm.js",
   "module": "dist/vb-smooth.esm.js",
