@@ -2,7 +2,7 @@
 
 <a href="https://www.npmjs.com/package/vb-smooth"><img src="https://img.shields.io/npm/v/vb-smooth.svg" alt="Version"></a>
 
-> Smooth scroll component for Vue3 and Nuxt apps.
+> Smooth scroll component for Vue3 and Nuxt apps. [Demo](https://ehsan-shv.github.io/vb-smooth/)
 
 ## Instalation
 
@@ -15,7 +15,7 @@ npm i vb-smooth
 ```js
 <template>
   <VBSmooth>
-    <!-- Your Content...  -->
+     // Your Content...
   </VBSmooth>
 </template>
 <script lang="ts">
@@ -51,7 +51,7 @@ Check out options at [docs](https://github.com/idiotWu/smooth-scrollbar).
 ```js
 <template>
   <VBSmooth :options="options">
-    <!-- Your Content...  -->
+    // Your Content...
   </VBSmooth>
 </template>
 <script lang="ts">
